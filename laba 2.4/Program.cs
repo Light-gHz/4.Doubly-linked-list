@@ -52,7 +52,7 @@ namespace laba_2._4
                 }
                 else if (key == "3")
                 {
-                    node.FinishSorting();
+                    node.FinishChange();
                 }
                 else
                 {

@@ -16,8 +16,7 @@ namespace laba_2._4
             if (Head == null)
             {
                 Head = new Node<T>(data);
-                Tail = new Node<T>(data);
-
+                Tail = Head;
             }
             else
             {
@@ -25,26 +24,15 @@ namespace laba_2._4
                 current.Previous = new Node<T>(data);
                 Head = current.Previous;
                 Head.Next = current;
-                Node<T> current1 = Tail;
-                while (current1.Previous != null)
-                {
-                    current1 = current1.Previous;
-                }
-                current1.Previous = new Node<T>(data);
-                Node<T> current2 = Tail;
-                while (current2.Previous != null)
-                {
-                    current2 = current2.Previous;
-                }
-                current2.Next = current1;
             }
         }
+
         public void AddInEnd(int data)
         {
             if (Tail == null)
             {
                 Head = new Node<T>(data);
-                Tail = new Node<T>(data);
+                Tail = Head;
             }
             else
             {
@@ -52,20 +40,9 @@ namespace laba_2._4
                 current.Next = new Node<T>(data);
                 Tail = current.Next;
                 Tail.Previous = current;
-                Node<T> current1 = Head;
-                while (current1.Next != null)
-                {
-                    current1 = current1.Next;
-                }
-                current1.Next = new Node<T>(data);
-                Node<T> current2 = Head;
-                while (current2.Next != null)
-                {
-                    current2 = current2.Next;
-                }
-                current2.Previous = current1;
             }
         }
+
         public void WriteNodeListFromStart()
         {
             Console.WriteLine();
@@ -81,6 +58,7 @@ namespace laba_2._4
             }
             Console.WriteLine("\n");
         }
+
         public void WriteNodeListFromEnd()
         {
             Console.WriteLine();
@@ -96,6 +74,7 @@ namespace laba_2._4
             }
             Console.WriteLine("\n");
         }
+
         public int FindAvg()
         {
             int avg = 0;
@@ -103,26 +82,28 @@ namespace laba_2._4
             Node<T> current = Head;
             while (current != null)
             {
-                avg += current.Data;
+                avg += Convert.ToInt32(current.Data);
                 count++;
                 current = current.Next;
             }
             avg /= count;
             return avg;
         }
-        public void Sorting(int avg)
+
+        public void Change(int avg)
         {
             Node<T> current = Head;
             while (current != null)
             {
-                if (current.Data < avg)
+                if (Convert.ToInt32(current.Data) < avg)
                 {
                     current.Data = avg;
                 }
                 current = current.Next;
             }
         }
-        public void FinishSorting()
+
+        public void FinishChange()
         {
             if (Head == null)
             {
@@ -131,7 +112,7 @@ namespace laba_2._4
             else
             {
                 int avg = FindAvg();
-                Sorting(avg);
+                Change(avg);
                 Console.WriteLine("Список осортирован \n");
             }
         }
